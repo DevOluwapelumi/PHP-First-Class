@@ -28,8 +28,7 @@ $obj->age=100;
 print_r($obj);
 echo '<br>';
 print_r($obj->firstname);
-echo '<br>';
-
+echo '<br>';'
 
 
             //Invalid Array//
