@@ -17,4 +17,7 @@ Extensive Library and Framework Support: PHP has a vast ecosystem of libraries a
 Security Considerations: PHP, like any other scripting language, needs to be used with security in mind. Developers need to be aware of common security vulnerabilities like SQL injection and Cross-Site Scripting (XSS) and implement best practices to mitigate them.
 
 Community and Resources: PHP has a large and active developer community. You can find a wealth of resources, including documentation, tutorials, forums, and code examples, to help you learn and troubleshoot issues.
+Command Line Usage: In addition to web development, PHP can also be used for command-line scripting. This allows you to automate tasks and perform system-level operations.
+
+Version Updates: PHP is continuously evolving, and new versions are released regularly. It's essential to stay up-to-date with the latest PHP versions for security and performance improvements.
 
