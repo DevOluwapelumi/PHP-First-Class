@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>SignUp Page</title>
 </head>
 <body>
-    <div class="">
+
+<div class="container">
+    <div>
+        <div>
+            <?php
+            session_start();
+            if(isset($_SESSION['msg'])){
+                echo "<div class='text-center alert alert-danger'>".$_SESSION['msg']."</div>";
+                session_unset(i);
+            }
+            ?>
+        </div>
+    </div>
         <div>
             <form action="submit.php" method="post">
                 <input type="text" placeholder="First Name" name="first_name">
@@ -23,5 +36,6 @@
             </form>
         </div>
     </div>
+    
 </body>
 </html>

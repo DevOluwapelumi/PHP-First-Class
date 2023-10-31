@@ -2,6 +2,7 @@
 // echo 'Submitted';
 // print_r ($_POST);
 require 'connection.php';
+session_start();
 echo '<br>';
 if (isset($_POST['submit'])){
     print_r ($_POST);
@@ -17,24 +18,43 @@ if (isset($_POST['submit'])){
     $department= $_POST['department'];
     $password= $_POST['password'];
 
-    //hashing of password//
-    $hashedpassword= password_hash($password, PASSWORD_DEFAULT);
-    echo $hashedpassword;
+    //verify Email//
+    $query="SELECT * FROM students WHERE email = '$email'";
+    $emailverify=$dbconnection->query($dbquery);
+    print_r($emailverify);
 
-    //Saving inside Database//
-    $dbquery="INSERT INTO students(first_name,last_name,phone_number,email,age,gender,address,complexion,department,password) VALUES( '$first_name', '$last_name', '$phone_number', '$email', '$age', '$gender', '$address', '$complexion', '$department', '$hashedpassword')";
-
-    $savedquery = $dbconnection->query($dbquery);
-    if($savedquery){
-        echo $savedquery;
-    }
-    // if(savedquery){
-    //     echo "Successfully Saved";
-    // }else{
-    //     echo "Not Successfully Saved";
-    // }
-    }else{
+    if($emailverify->num_rows>0){
+        $_SESSION['msg']="Email has been taken";
         header('location:signup.php');
+    }else{
+        $hash= password_hash($password, PASSWORD_DEFAULT);
+        $dbquery="INSERT INTO students(first_name,last_name,phone_number,email,age,gender,address,complexion,department,password) VALUES( '$first_name', '$last_name', '$phone_number', '$email', '$age', '$gender', '$address', '$complexion', '$department', '$hashedpassword')";
+        $dbq = $dbconnection->query($dbquery);
+        if($dbq){
+            header('location:login.php');
+        }else {
+            $_SESSION['msg']="Unsuccessful Registration";
+            header('location:signup.php');
+        }
+
+
+    // //hashing of password//
+    // // $hashedpassword= password_hash($password, PASSWORD_DEFAULT);
+    // // echo $hashedpassword;
+
+    // // //Saving inside Database//
+    // // $dbquery="INSERT INTO students(first_name,last_name,phone_number,email,age,gender,address,complexion,department,password) VALUES( '$first_name', '$last_name', '$phone_number', '$email', '$age', '$gender', '$address', '$complexion', '$department', '$hashedpassword')";
+
+    // // $savedquery = $dbconnection->query($dbquery);
+    // // if($savedquery){
+    // //     echo $savedquery;
+    // // }
+    // // if(savedquery){
+    // //     echo "Successfully Saved";
+    // // }else{
+    // //     echo "Not Successfully Saved";
+    // // }
+    }
     }
    
 ?>

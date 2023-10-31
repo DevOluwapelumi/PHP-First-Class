@@ -31,32 +31,32 @@ print_r($obj->firstname);
 echo '<br>';'
 
 
-            //Invalid Array//
-            $firstarray=[1,2,3,4, 'PHP we move!!!'];
-            print_r($firstarray);
-            echo '<br>';
-            $secondarray=array('Damilola','Aremu');
-            print_r($secondarray);
-            echo '<br>';
+            // //Invalid Array//
+            // $firstarray=[1,2,3,4, 'PHP we move!!!'];
+            // print_r($firstarray);
+            // echo '<br>';
+            // $secondarray=array('Damilola','Aremu');
+            // print_r($secondarray);
+            // echo '<br>';
 
-            //Associate Array//
-            $thirdarray=[
-                "age"=>80,
-                "lastname"=>"Dolly Pee",
-                "school"=>"SQI",
-            ];
-            // print_r($thirdarray);
-            print_r($thirdarray['lastname']);
-            echo '<br>';
+            // //Associate Array//
+            // $thirdarray=[
+            //     "age"=>80,
+            //     "lastname"=>"Dolly Pee",
+            //     "school"=>"SQI",
+            // ];
+            // // print_r($thirdarray);
+            // print_r($thirdarray['lastname']);
+            // echo '<br>';
 
-            //Multidimensional Array//
-            array_push($firstarray, $secondarray, $thirdarray);
-            print_r($firstarray);
-            echo '<br>';
+            // //Multidimensional Array//
+            // array_push($firstarray, $secondarray, $thirdarray);
+            // print_r($firstarray);
+            // echo '<br>';
 
-            echo 'My name is '.$name;
-            echo '<br>';
-            for ($i=0; $i < count($firstarray); $i++) { 
-                print_r($firstarray[$i]);
-            }
+            // echo 'My name is '.$name;
+            // echo '<br>';
+            // for ($i=0; $i < count($firstarray); $i++) { 
+            //     print_r($firstarray[$i]);
+            // }
 ?>
