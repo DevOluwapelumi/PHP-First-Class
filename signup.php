@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet"> -->
     <title>SignUp Page</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
             session_start();
             if(isset($_SESSION['msg'])){
                 echo "<div class='text-center alert alert-danger'>".$_SESSION['msg']."</div>";
-                session_unset(i);
+                session_unset();
             }
             ?>
         </div>

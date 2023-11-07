@@ -27,7 +27,8 @@ if (isset($_POST['submit'])){
         $_SESSION['msg']="Email has been taken";
         header('location:signup.php');
     }else{
-        $hash= password_hash($password, PASSWORD_DEFAULT);
+        $hashedpassword= password_hash($password, PASSWORD_DEFAULT);
+        echo $hashedpassword;
         $dbquery="INSERT INTO students(first_name,last_name,phone_number,email,age,gender,address,complexion,department,password) VALUES( '$first_name', '$last_name', '$phone_number', '$email', '$age', '$gender', '$address', '$complexion', '$department', '$hashedpassword')";
         $dbq = $dbconnection->query($dbquery);
         if($dbq){
