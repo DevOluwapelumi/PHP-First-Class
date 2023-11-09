@@ -1,12 +1,15 @@
 <?php
+session_start();
 require 'connection.php';
+
 if(isset($_POST['submit'])){
     $email= $_POST['email'];
     $password= $_POST['password'];
     $query="SELECT * FROM students WHERE email = '$email'";
-    $query=$dbconnection->query($query);
-    if ($query->num_rows>0){
-        $user = $query->fetch_assoc();
+    $result=$dbconnection->query($query);
+
+    if ($result->num_rows>0){
+        $user = $result->fetch_assoc();
         print_r($user);
         $hashedpassword=$user['password'];
         $userid=$user['user_id'];
@@ -14,16 +17,26 @@ if(isset($_POST['submit'])){
         echo '<br>';
             
         //verify password//
-        $passwordverify = password_verify($password,$hashedpassword);
-        if($passwordverify){
+    //     $passwordverify = password_verify($password,$hashedpassword);
+    //     if($passwordverify){
+    //         $_SESSION['userid'] = $userid;
+    //         header('location:dashboard.php');
+    //     }  else {
+    //         echo "<div class='alert alert-danger text-center'>Incorrect Password</div>";
+    //     }      
+    // }else {
+    //     echo "<div class='alert alert-danger text-center'>Invalid Email Address</div>";
+    //     header('location:login.php');
+    // }
+           // Verify password
+           if(password_verify($password, $hashedpassword)){
             $_SESSION['userid'] = $userid;
             header('location:dashboard.php');
-        }  else {
+        } else {
             echo "<div class='alert alert-danger text-center'>Incorrect Password</div>";
-        }      
-    }else {
+        }
+    } else {
         echo "<div class='alert alert-danger text-center'>Invalid Email Address</div>";
-        header('location:login.php');
     }
 }
 ?>
