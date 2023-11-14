@@ -168,8 +168,9 @@ if(isset($_SESSION['userid'])){
         echo "Profile picture not available.";
     }
     ?>
-
 </div>
+<?php echo $name ?>
+<?php echo $temp ?>
 
 
 </body>
