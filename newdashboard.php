@@ -1,6 +1,5 @@
 <?php
 require 'connection.php';
-
 session_start();
 if (!isset($_SESSION['userid'])) {
     header('location: newlogin.php');
@@ -8,10 +7,12 @@ if (!isset($_SESSION['userid'])) {
 }
 
 $userid = $_SESSION['userid'];
+echo $userid;
 $query = "SELECT * FROM students WHERE userid = ?";
 $prepare = $dbconnection->prepare($query);
 $prepare->bind_param('i', $userid);
 $prepare->execute();
+print_r($prepare);
 $result = $prepare->get_result();
 $userDetails = $result->fetch_assoc();
 ?>
