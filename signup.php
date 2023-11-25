@@ -21,7 +21,7 @@
         </div>
     </div>
         <div>
-            <form action="submit.php" method="post">
+            <form action="" method="post">
                 <input type="text" placeholder="First Name" name="first_name">
                 <input type="text" placeholder="Last Name" name="last_name">
                 <input type="text" placeholder="Phone Number" name="phone_number">
