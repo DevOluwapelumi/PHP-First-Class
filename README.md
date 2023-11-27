@@ -1,4 +1,4 @@
-
+PHP (Hypertext Preprocessor) is a server-side scripting language that is widely used for web development. It was originally created by Rasmus Lerdorf in 1994 and has since evolved into a powerful and versatile language.
 <!-- For spacing...
 echo '<br>'; -->
 
