@@ -1,13 +1,14 @@
 <?php
 require ('connection.php');
-header("Access-Control-Allow-Origin:*");
+header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers:Content-Type");
 header("Content-Type: application/json");
 echo json_encode('yes');
 
 
-$input = json_decode(file_get_contents ("php://input"), true);
-echo json_encode($input['first_name']);
+
+$input = json_decode(file_get_contents("php://input"), true);
+
 $first_name= $input['first_name'];
 $last_name=$input['last_name'];
 $phone_number= $input['phone_number'];
@@ -19,12 +20,20 @@ $complexion= $input['complexion'];
 $department= $input['department'];
 $password=$input['password'];
 
-// $result=['first_name'=>$first_name, 'success' => 'true', 'allname' => $input];
+// if (isset($input['first_name'])) {
+//     $first_name = $input['first_name'];
+//     echo json_encode($first_name);
+
+// } else {
+//     echo json_encode("Error: 'first_name' not found in the input data.");
+// }
+
 
 $query = "SELECT * FROM students WHERE email = ?";
 $prepare = $dbconnection->prepare($query);
 $prepare->bind_param('s', $email);
 $execute = $prepare->execute();
+
 if($execute){
     $confirm=$prepare->get_result();
     if($confirm->num_rows>0){
@@ -36,10 +45,13 @@ if($execute){
         $queries="INSERT INTO students(first_name,last_name,phone_number,email,age,gender,address,complexion,department,password) VALUES(?,?,?,?,?,?,?,?,?,?)";
         $prep = $dbconnection->prepare($queries);
          $prep-> bind_param('ssssisssss', $first_name,$last_name,$phone_number,$email,$age,$gender,$address,$complexion,$department,$hashedpassword);
+
          $execute = $prep->execute();
+
          if($execute){
             $result=['email' => $email, 'status' => true, 'message'=> "Registration Successful"];
             echo json_encode($result);
+            // header("Location: backendsignin");
          }
          else{
             $result=['status'=>false, 'message'=> "Registration Failed", 'error' => $dbconnection->error];
